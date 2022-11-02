@@ -1,0 +1,10 @@
+int function muestra(){
+    int y;
+    return f;
+}
+
+main (){
+    int x;
+    x = 5 + 3;
+    muestra();
+}

@@ -1,0 +1,13 @@
+
+int function muestra2 (int y){
+  int y;
+  y = 0;
+  return y;
+}
+
+main (){
+  int x;
+  x = y +3;
+  -->y = 2 +3;
+  -->x = muestra(4);
+}

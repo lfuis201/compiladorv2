@@ -1,0 +1,11 @@
+-->comentario
+
+main ( ) { 
+    int x;
+    int y;
+    int z;
+
+    x = 5;
+    y = x + h;
+    z = x + y;
+}

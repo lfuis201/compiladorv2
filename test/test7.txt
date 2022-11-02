@@ -1,0 +1,9 @@
+main ( ) { 
+    int z;
+    int x;
+    x=5;
+    int x;
+    x = 5;
+    y = x + h;
+    z = x + y;
+}
