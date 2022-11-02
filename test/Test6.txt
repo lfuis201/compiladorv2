@@ -1,6 +1,11 @@
 
-int function muestra2 (int y){
+int function muestra2 ( ){
   int y;
+  y = 0;
+  return y;
+}
+
+int function muestra2 ( ){
   y = 0;
   return y;
 }

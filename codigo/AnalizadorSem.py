@@ -36,14 +36,6 @@ def findST(lexeme):
             val = True
     return val
 
-def findSTT(lexeme):
-    for symbol in reversed(symbol_table_array):
-        #print("PRINT SYMBOL: ",symbol.id)
-        #print("PRINT LEXEMA: ", lexeme)
-        if symbol.id.strip() == lexeme:
-            #print("IF SYMBOL", symbol.id)
-            return symbol.type
-
 def printST():
     for i in symbol_table_array:
         print(i.id, i.type, i.category, i.father, i.line)
@@ -81,9 +73,8 @@ def findVal(node):
         if (findST(node.lexeme)):
             print("Variable encontrada")
         else:
-            print("FATAL ERROR SEM VARIABLE NO DEFINIDA", node.lexeme, node.line)
+            print("ERROR SEMANTIVO VARIABLE NO DEFINIDA", node.lexeme, node.line)
 
-    updateType(node)
 
     if node.symbol.symbol == 'keyr':
         #print("PADRE DE KEYR: ", node.father.symbol.symbol)
@@ -99,94 +90,7 @@ def findVal(node):
     for child in node.children:
         findVal(child)
 
-def setType(node):
-    if node.symbol.symbol == 'STATEMENT':
-        if len(node.children) > 0:
-            primer_hijo = node.children[0]
-
-            if primer_hijo.symbol.symbol == 'TYPE':
-                node_tp = primer_hijo.children[0]
-                primer_hijo.father.children[1].children[0].type = node_tp.lexeme
-            
-    if node.symbol.symbol == 'FUNCTION':
-        if len(node.children) > 0:
-            node_type = node.children[0].children[0]
-            node.children[2].type = node_type.lexeme
-
-    for child in node.children:
-        setType(child)
-
-def updateType(node):
-    if node.symbol.symbol == 'STATEMENT':
-        if len(node.children) > 0:
-            primer_hijo = node.children[0]
-            if primer_hijo.symbol.symbol == 'id':
-                #print("IF ID")
-                lex = findSTT(primer_hijo.lexeme)
-                #print("LEX ", lex)
-                if lex:
-                    primer_hijo.type = lex
-                    #print("TIPO NODO LEX", primer_hijo.type)
-
-        if len(node.children) > 2:
-            #print("ENTRANDO A CHILDREN > 2")
-            tercer_hijo = node.children[2]
-            if tercer_hijo.symbol.symbol == 'E':
-                setTypeE(tercer_hijo)
-
-    for child in node.children:
-        updateType(child)
-
-
-def setTypeE(node):
-    node_E = node
-    node.type = 'int'
-    #print("NODE_E ", node_E.symbol.symbol)
-    if node_E.children[0].symbol.symbol == 'T':
-        node_TERM = node_E.children[0].children[0]
-        #print("ENTRANDO NODE_T ", node_TERM.symbol.symbol)
-        if node_TERM.symbol.symbol == 'TERM':
-            if node_TERM.children[0].symbol.symbol == 'num':
-                node_TERM.children[0].type = 'int'
-            elif node_TERM.children[0].symbol.symbol == 'id':
-                lex = findSTT(node_TERM.children[0].lexeme)
-                #print("IMPRIMIENDO LEX ", lex)
-                if lex:
-                    node_TERM.children[0].type = lex
-            elif node_TERM.children[0].symbol.symbol == 'boolean':
-                node_TERM.children[0].type = 'bool'
-
-    if node_E.children[1].symbol.symbol == 'E\'':
-        setTypeEe(node_E.children[1])
-        
-    for child in node.children:
-        setType(child)
-
-
-def setTypeEe(node):
-    node_Ee = node
-    if len(node_Ee.children) > 1:
-        #print("NODE_Ee ", node_Ee.symbol.symbol)
-        node_TERM = node_Ee.children[1].children[0]
-        #print("NODE_TERM ", node_TERM.symbol.symbol)
-        #print("ENTRANDO NODE_T ", node_TERM.symbol.symbol)
-        if node_TERM.symbol.symbol == 'TERM':
-            if node_TERM.children[0].symbol.symbol == 'num':
-                node_TERM.children[0].type = 'int'
-
-            elif node_TERM.children[0].symbol.symbol == 'id':
-                #print("IMPRIMIENDO LEX NODE TERM ", node_TERM.children[0].lexeme)
-                lex = findSTT(node_TERM.children[0].lexeme)
-                #print("IMPRIMIENDO LEX ", lex)
-                if lex:
-                    node_TERM.children[0].type = lex
-            elif node_TERM.children[0].symbol.symbol == 'boolean':
-                node_TERM.children[0].type = 'bool'
-                    
-    for child in node.children:
-        setTypeEe(child)
-
-file_name = "test/test1.txt"
+file_name = "test/Test4.txt"
 
 # lexer
 tokens = get_tokens(file_name)
@@ -194,6 +98,5 @@ tokens.append([ '$', None, None ])
 
 root, node_list = parser(tokens)
 
-setType(root)
 findVal(root)
 print_tree(root, node_list)
