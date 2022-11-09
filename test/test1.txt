@@ -5,7 +5,8 @@ main ( ) {
     int y;
     int z;
 
+    
     x = 5;
-    y = x + h;
+    y = x + 10;
     z = x + y;
 }

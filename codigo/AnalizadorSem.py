@@ -30,8 +30,8 @@ def removeST():
 def findST(lexeme):
     val = False
     for symbol in reversed(symbol_table_array):
-        #print("PRINT SYMBOl: ",symbol.id)
-        #print("PRINT LEXEMA: ", lexeme)
+        #print("SYMBOl: ",symbol.id)
+        #print("LEXEMA: ", lexeme)
         if symbol.id.strip() == lexeme:
             val = True
     return val
@@ -73,7 +73,7 @@ def findVal(node):
         if (findST(node.lexeme)):
             print("Variable encontrada")
         else:
-            print("ERROR SEMANTIVO VARIABLE NO DEFINIDA", node.lexeme, node.line)
+            print("ERROR SEMANTICO VARIABLE NO DEFINIDA", node.lexeme, node.line)
 
 
     if node.symbol.symbol == 'keyr':
@@ -90,7 +90,34 @@ def findVal(node):
     for child in node.children:
         findVal(child)
 
-file_name = "test/Test4.txt"
+
+def findSTT(lexeme):
+    for symbol in reversed(symbol_table_array):
+        #print("PRINT SYMBOLID: ",symbol.id)
+        #print("PRINT LEXEME: ", lexeme)
+        if symbol.id.strip() == lexeme:
+            #print("IF SYMBOL", symbol.id)
+            return symbol.type
+
+def setType(node):
+    if node.symbol.symbol == 'STATEMENT':
+        if len(node.children) > 0:
+            primer_hijo = node.children[0]
+
+            if primer_hijo.symbol.symbol == 'TYPE':
+                node_tp = primer_hijo.children[0]
+                primer_hijo.father.children[1].children[0].type = node_tp.lexeme
+            
+
+    for child in node.children:
+        setType(child)
+        if(child.type != None):
+            print("variable de tipo: ",child.type, "en linea: ",child.line)
+
+      
+
+
+file_name = "test/test1.txt"
 
 # lexer
 tokens = get_tokens(file_name)
@@ -100,3 +127,5 @@ root, node_list = parser(tokens)
 
 findVal(root)
 print_tree(root, node_list)
+setType(root)
+
