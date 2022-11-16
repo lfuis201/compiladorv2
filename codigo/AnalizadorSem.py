@@ -90,7 +90,7 @@ def findVal(node):
     for child in node.children:
         findVal(child)
 
-
+#buscar por tipo
 def findSTT(lexeme):
     for symbol in reversed(symbol_table_array):
         #print("PRINT SYMBOLID: ",symbol.id)
@@ -98,25 +98,92 @@ def findSTT(lexeme):
         if symbol.id.strip() == lexeme:
             #print("IF SYMBOL", symbol.id)
             return symbol.type
-
+#setar tipos
 def setType(node):
     if node.symbol.symbol == 'STATEMENT':
         if len(node.children) > 0:
             primer_hijo = node.children[0]
+            segundo_hijo = node.children[1]
 
             if primer_hijo.symbol.symbol == 'TYPE':
+                print(str(segundo_hijo.children[1].symbol.symbol))
                 node_tp = primer_hijo.children[0]
                 primer_hijo.father.children[1].children[0].type = node_tp.lexeme
-            
 
     for child in node.children:
-        setType(child)
         if(child.type != None):
             print("variable de tipo: ",child.type, "en linea: ",child.line)
+        setType(child)
 
-      
+#recorrer nodo STATEMENT con nodo E
+def setTypeE(node):
+    if node.symbol.symbol == 'STATEMENT':
+        if len(node.children) > 0:
+            primer_hijo = node.children[0]
+            if primer_hijo.symbol.symbol == 'id':
+                
+                lex = findSTT(primer_hijo.lexeme)
+                if lex:
+                    primer_hijo.type = lex
 
+        if len(node.children) > 2:
+            
+            tercer_hijo = node.children[2]
+            if tercer_hijo.symbol.symbol == 'E':
+                setTypeT(tercer_hijo)
 
+    for child in node.children:
+        setTypeE(child)
+
+#recorre nodo T
+def setTypeT(node):
+    node_E = node
+    node.type = 'int'
+    if node_E.children[0].symbol.symbol == 'T':
+        node_TERM = node_E.children[0].children[0]
+        if node_TERM.symbol.symbol == 'TERM':
+            if node_TERM.children[0].symbol.symbol == 'num':
+                node_TERM.children[0].type = 'int'
+            elif node_TERM.children[0].symbol.symbol == 'id':
+                lex = findSTT(node_TERM.children[0].lexeme)
+                #print("IMPRIMIENDO LEX ", lex)
+                if lex:
+                    node_TERM.children[0].type = lex
+            elif node_TERM.children[0].symbol.symbol == 'boolean':
+                node_TERM.children[0].type = 'bool'
+
+    if node_E.children[1].symbol.symbol == 'E\'':
+        setTypeEprim(node_E.children[1])
+        
+    for child in node.children:
+        setType(child)
+
+#Recorrer nodo E'
+def setTypeEprim(node):
+    node_Ee = node
+    if len(node_Ee.children) > 1:
+        node_TERM = node_Ee.children[1].children[0]
+        node_OPE = node_Ee.children[0].children[0]
+        if node_TERM.symbol.symbol == 'TERM' and node_OPE == "OPER":
+            if node_TERM.children[0].symbol.symbol == 'num':
+                node_TERM.children[0].type = 'int'
+
+            elif node_TERM.children[0].symbol.symbol == 'id':
+                lex = findSTT(node_TERM.children[0].lexeme)
+                
+                if lex:
+                    node_TERM.children[0].type = lex
+            elif node_TERM.children[0].symbol.symbol == 'boolean':
+                node_TERM.children[0].type = 'bool'
+                    
+    for child in node.children:
+        setTypeEprim(child)
+
+def printroot(node):
+    for child in node.children:
+        print(str(node.symbol.symbol) + ' -> ' + str(child.symbol.symbol) + '; \n')
+        printroot(child)
+     
 file_name = "test/test1.txt"
 
 # lexer
@@ -127,5 +194,5 @@ root, node_list = parser(tokens)
 
 findVal(root)
 print_tree(root, node_list)
-setType(root)
-
+setTypeE(root)
+#printroot(root)
