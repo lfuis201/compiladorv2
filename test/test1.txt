@@ -1,13 +1,9 @@
 -->comentario
 
 main ( ) { 
-    int x;
-    int y;
-    int z;
-    bool bol1;
+    int x = 1;
+    int y = 2;
+    int z = x + y;
 
-    x=5+5*4-6;
-    y=10;
-    bol1 = true+false;
-
+    
 }

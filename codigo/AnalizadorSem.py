@@ -40,6 +40,8 @@ def printST():
     for i in symbol_table_array:
         print(i.id, i.type, i.category, i.father, i.line)
 
+
+
 def findVal(node):
     global gbl_nombre_function
     if node.symbol.symbol == 'FUNCTION':
@@ -48,17 +50,22 @@ def findVal(node):
         #print(gbl_nombre_function)
 
         variable_fun = node.children[2]
-        insertST(variable_fun, "Funcion", gbl_nombre_function)
+        if (findST(variable_fun.lexeme)):
+            print("Eror funcion ya definida", variable_fun.line)
+        else:
+            insertST(variable_fun, "func", "BLOCK")
+            print("FUNCION creada", variable_fun.line)
 
     if node.symbol.symbol == 'STATEMENT':
         if len(node.children) > 0:
             primer_hijo = node.children[0]
-
+            segudno_hijo = node.children[1]
+            
             if primer_hijo.symbol.symbol == 'TYPE':
                 hermano = primer_hijo.father.children[1]
                 variable = hermano.children[0]
-                #print("Aqui se crea una variable", variable.lexeme)
                 if (findST(variable.lexeme)):
+                    
                     print("ERROR SEMANTICO VARIABLE YA DEFINIDA")
                 else:
                 #buscar si existe, true error semantico (ya definida)
@@ -71,9 +78,11 @@ def findVal(node):
         #print("uso la variable", node.lexeme)
         #buscar en la tabla, false error semantico (variable no definida)
         if (findST(node.lexeme)):
-            print("Variable encontrada")
+            print("Variable encontrada", node.line )
         else:
             print("ERROR SEMANTICO VARIABLE NO DEFINIDA", node.lexeme, node.line)
+    
+    
 
 
     if node.symbol.symbol == 'keyr':
@@ -90,6 +99,7 @@ def findVal(node):
     for child in node.children:
         findVal(child)
 
+
 #buscar por tipo
 def findSTT(lexeme):
     for symbol in reversed(symbol_table_array):
@@ -98,7 +108,7 @@ def findSTT(lexeme):
         if symbol.id.strip() == lexeme:
             #print("IF SYMBOL", symbol.id)
             return symbol.type
-#setar tipos
+#setear tipos
 def setType(node):
     if node.symbol.symbol == 'STATEMENT':
         if len(node.children) > 0:
@@ -106,14 +116,13 @@ def setType(node):
             segundo_hijo = node.children[1]
 
             if primer_hijo.symbol.symbol == 'TYPE':
-                print(str(segundo_hijo.children[1].symbol.symbol))
                 node_tp = primer_hijo.children[0]
                 primer_hijo.father.children[1].children[0].type = node_tp.lexeme
 
     for child in node.children:
-        if(child.type != None):
-            print("variable de tipo: ",child.type, "en linea: ",child.line)
         setType(child)
+        if child.type != None:
+           print("variable de tipo: ",child.type, "en linea: ",child.line)
 
 #recorrer nodo STATEMENT con nodo E
 def setTypeE(node):
@@ -151,12 +160,11 @@ def setTypeT(node):
                     node_TERM.children[0].type = lex
             elif node_TERM.children[0].symbol.symbol == 'boolean':
                 node_TERM.children[0].type = 'bool'
-
+        else:
+            print("error de tipos a", node_TERM.children[0].line)
     if node_E.children[1].symbol.symbol == 'E\'':
         setTypeEprim(node_E.children[1])
         
-    for child in node.children:
-        setType(child)
 
 #Recorrer nodo E'
 def setTypeEprim(node):
@@ -167,17 +175,21 @@ def setTypeEprim(node):
         if node_TERM.symbol.symbol == 'TERM' and node_OPE == "OPER":
             if node_TERM.children[0].symbol.symbol == 'num':
                 node_TERM.children[0].type = 'int'
-
+                
             elif node_TERM.children[0].symbol.symbol == 'id':
                 lex = findSTT(node_TERM.children[0].lexeme)
                 
                 if lex:
                     node_TERM.children[0].type = lex
+                    
             elif node_TERM.children[0].symbol.symbol == 'boolean':
                 node_TERM.children[0].type = 'bool'
-                    
-    for child in node.children:
-        setTypeEprim(child)
+                
+        
+        else:
+            print("error de tipos", node_TERM.children[0].line)
+        
+        
 
 def printroot(node):
     for child in node.children:
@@ -192,7 +204,8 @@ tokens.append([ '$', None, None ])
 
 root, node_list = parser(tokens)
 
+setType(root)
 findVal(root)
+
 print_tree(root, node_list)
-setTypeE(root)
 #printroot(root)

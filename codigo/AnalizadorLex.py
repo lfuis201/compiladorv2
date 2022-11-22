@@ -9,7 +9,8 @@ reservadas = {
     'if' : 'if',
     'else' : 'else',
     'while' : 'while',
-    'for' : 'for'
+    'for' : 'for',
+    'print' : 'print'
     }
 
 
@@ -33,7 +34,7 @@ tokens = [
     'parenr',
     'and',
     'or',
-    'assign',
+    'equal',
     'keyl',
     'keyr',
     'id',
@@ -53,7 +54,7 @@ t_opediv     = r'/'
 t_opemod     = r'%'
 t_and        = r'&'
 t_or         = r'\|'
-t_assign     = r'='
+t_equal     = r'='
 t_igualq     = r'=='
 t_noigualq   = r'<>'
 t_menorq     = r'<'

@@ -15,86 +15,53 @@ digraph G {
 14 [ label=" TYPE " ]; 
 15 [ label=< <b>int</b> <br/>int > ]; 
 16 [ label=< <b>dotcomma</b> <br/>; > ]; 
-17 [ label=< <b>id</b> <br/>x > ]; 
-18 [ label=" LIST_STATEMENT " ]; 
-19 [ label=" STATEMENT " ]; 
-20 [ label=" DECL " ]; 
-21 [ label=" TYPE " ]; 
-22 [ label=< <b>int</b> <br/>int > ]; 
-23 [ label=< <b>dotcomma</b> <br/>; > ]; 
-24 [ label=< <b>id</b> <br/>y > ]; 
+17 [ label=" E " ]; 
+18 [ label=< <b>equal</b> <br/>= > ]; 
+19 [ label=< <b>id</b> <br/>x > ]; 
+20 [ label=" E' " ]; 
+21 [ label=" T " ]; 
+22 [ label=" TERM " ]; 
+23 [ label=< <b>num</b> <br/>1 > ]; 
+24 [ label=< <b>e</b> > ]; 
 25 [ label=" LIST_STATEMENT " ]; 
 26 [ label=" STATEMENT " ]; 
 27 [ label=" DECL " ]; 
 28 [ label=" TYPE " ]; 
 29 [ label=< <b>int</b> <br/>int > ]; 
 30 [ label=< <b>dotcomma</b> <br/>; > ]; 
-31 [ label=< <b>id</b> <br/>z > ]; 
-32 [ label=" LIST_STATEMENT " ]; 
-33 [ label=" STATEMENT " ]; 
-34 [ label=" DECL " ]; 
-35 [ label=" TYPE " ]; 
-36 [ label=< <b>bool</b> <br/>bool > ]; 
-37 [ label=< <b>dotcomma</b> <br/>; > ]; 
-38 [ label=< <b>id</b> <br/>bol1 > ]; 
+31 [ label=" E " ]; 
+32 [ label=< <b>equal</b> <br/>= > ]; 
+33 [ label=< <b>id</b> <br/>y > ]; 
+34 [ label=" E' " ]; 
+35 [ label=" T " ]; 
+36 [ label=" TERM " ]; 
+37 [ label=< <b>num</b> <br/>2 > ]; 
+38 [ label=< <b>e</b> > ]; 
 39 [ label=" LIST_STATEMENT " ]; 
 40 [ label=" STATEMENT " ]; 
-41 [ label=< <b>dotcomma</b> <br/>; > ]; 
-42 [ label=" E " ]; 
-43 [ label=< <b>assign</b> <br/>= > ]; 
-44 [ label=< <b>id</b> <br/>x > ]; 
-45 [ label=" E' " ]; 
-46 [ label=" T " ]; 
-47 [ label=" TERM " ]; 
-48 [ label=< <b>num</b> <br/>5 > ]; 
-49 [ label=" E' " ]; 
-50 [ label=" T " ]; 
-51 [ label=" OPER " ]; 
-52 [ label=< <b>opesuma</b> <br/>+ > ]; 
-53 [ label=" TERM " ]; 
-54 [ label=< <b>num</b> <br/>5 > ]; 
-55 [ label=" E' " ]; 
-56 [ label=" T " ]; 
-57 [ label=" OPER " ]; 
-58 [ label=< <b>opemult</b> <br/>* > ]; 
-59 [ label=" TERM " ]; 
-60 [ label=< <b>num</b> <br/>4 > ]; 
-61 [ label=" E' " ]; 
-62 [ label=" T " ]; 
-63 [ label=" OPER " ]; 
-64 [ label=< <b>opemenos</b> <br/>- > ]; 
-65 [ label=" TERM " ]; 
-66 [ label=< <b>num</b> <br/>6 > ]; 
-67 [ label=< <b>e</b> > ]; 
-68 [ label=" LIST_STATEMENT " ]; 
-69 [ label=" STATEMENT " ]; 
-70 [ label=< <b>dotcomma</b> <br/>; > ]; 
-71 [ label=" E " ]; 
-72 [ label=< <b>assign</b> <br/>= > ]; 
-73 [ label=< <b>id</b> <br/>y > ]; 
-74 [ label=" E' " ]; 
-75 [ label=" T " ]; 
-76 [ label=" TERM " ]; 
-77 [ label=< <b>num</b> <br/>10 > ]; 
-78 [ label=< <b>e</b> > ]; 
-79 [ label=" LIST_STATEMENT " ]; 
-80 [ label=" STATEMENT " ]; 
-81 [ label=< <b>dotcomma</b> <br/>; > ]; 
-82 [ label=" E " ]; 
-83 [ label=< <b>assign</b> <br/>= > ]; 
-84 [ label=< <b>id</b> <br/>bol1 > ]; 
-85 [ label=" E' " ]; 
-86 [ label=" T " ]; 
-87 [ label=" TERM " ]; 
-88 [ label=< <b>boolean</b> <br/>true > ]; 
-89 [ label=" E' " ]; 
-90 [ label=" T " ]; 
-91 [ label=" OPER " ]; 
-92 [ label=< <b>opesuma</b> <br/>+ > ]; 
-93 [ label=" TERM " ]; 
-94 [ label=< <b>boolean</b> <br/>false > ]; 
-95 [ label=< <b>e</b> > ]; 
-96 [ label=< <b>e</b> > ]; 
+41 [ label=" DECL " ]; 
+42 [ label=" TYPE " ]; 
+43 [ label=< <b>int</b> <br/>int > ]; 
+44 [ label=< <b>dotcomma</b> <br/>; > ]; 
+45 [ label=" E " ]; 
+46 [ label=< <b>equal</b> <br/>= > ]; 
+47 [ label=< <b>id</b> <br/>z > ]; 
+48 [ label=" E' " ]; 
+49 [ label=" T " ]; 
+50 [ label=" TERM " ]; 
+51 [ label=" TERM_FUNC " ]; 
+52 [ label=< <b>id</b> <br/>x > ]; 
+53 [ label=< <b>e</b> > ]; 
+54 [ label=" E' " ]; 
+55 [ label=" T " ]; 
+56 [ label=" OPER " ]; 
+57 [ label=< <b>opesuma</b> <br/>+ > ]; 
+58 [ label=" TERM " ]; 
+59 [ label=" TERM_FUNC " ]; 
+60 [ label=< <b>id</b> <br/>y > ]; 
+61 [ label=< <b>e</b> > ]; 
+62 [ label=< <b>e</b> > ]; 
+63 [ label=< <b>e</b> > ]; 
 1 -> 2; 
 2 -> 9; 
 9 -> 10; 
@@ -119,12 +86,43 @@ digraph G {
     rankdir = LR; 
 } 
 12 -> 13; 
+13 -> 19; 
+13 -> 18; 
 13 -> 17; 
+17 -> 21; 
+21 -> 22; 
+22 -> 23; 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+23; 
+    rankdir = LR; 
+} 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+22; 
+    rankdir = LR; 
+} 
+17 -> 20; 
+20 -> 24; 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+24; 
+    rankdir = LR; 
+} 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+21 -> 20; 
+    rankdir = LR; 
+} 
 13 -> 16; 
 { 
     rank = same; 
     edge[ style=invis]; 
-17 -> 16; 
+19 -> 18 -> 17 -> 16; 
     rankdir = LR; 
 } 
 { 
@@ -134,32 +132,7 @@ digraph G {
     rankdir = LR; 
 } 
 4 -> 11; 
-11 -> 19; 
-19 -> 21; 
-21 -> 22; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-22; 
-    rankdir = LR; 
-} 
-19 -> 20; 
-20 -> 24; 
-20 -> 23; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-24 -> 23; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-21 -> 20; 
-    rankdir = LR; 
-} 
-11 -> 18; 
-18 -> 26; 
+11 -> 26; 
 26 -> 28; 
 28 -> 29; 
 { 
@@ -169,37 +142,30 @@ digraph G {
     rankdir = LR; 
 } 
 26 -> 27; 
+27 -> 33; 
+27 -> 32; 
 27 -> 31; 
-27 -> 30; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-31 -> 30; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-28 -> 27; 
-    rankdir = LR; 
-} 
-18 -> 25; 
-25 -> 33; 
-33 -> 35; 
+31 -> 35; 
 35 -> 36; 
+36 -> 37; 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+37; 
+    rankdir = LR; 
+} 
 { 
     rank = same; 
     edge[ style=invis]; 
 36; 
     rankdir = LR; 
 } 
-33 -> 34; 
+31 -> 34; 
 34 -> 38; 
-34 -> 37; 
 { 
     rank = same; 
     edge[ style=invis]; 
-38 -> 37; 
+38; 
     rankdir = LR; 
 } 
 { 
@@ -208,267 +174,127 @@ digraph G {
 35 -> 34; 
     rankdir = LR; 
 } 
-25 -> 32; 
-32 -> 40; 
-40 -> 44; 
-40 -> 43; 
+27 -> 30; 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+33 -> 32 -> 31 -> 30; 
+    rankdir = LR; 
+} 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+28 -> 27; 
+    rankdir = LR; 
+} 
+11 -> 25; 
+25 -> 40; 
 40 -> 42; 
-42 -> 46; 
-46 -> 47; 
-47 -> 48; 
+42 -> 43; 
 { 
     rank = same; 
     edge[ style=invis]; 
-48; 
+43; 
     rankdir = LR; 
 } 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-47; 
-    rankdir = LR; 
-} 
-42 -> 45; 
-45 -> 51; 
-51 -> 52; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-52; 
-    rankdir = LR; 
-} 
-45 -> 50; 
-50 -> 53; 
-53 -> 54; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-54; 
-    rankdir = LR; 
-} 
+40 -> 41; 
+41 -> 47; 
+41 -> 46; 
+41 -> 45; 
+45 -> 49; 
+49 -> 50; 
+50 -> 52; 
+50 -> 51; 
+51 -> 53; 
 { 
     rank = same; 
     edge[ style=invis]; 
 53; 
     rankdir = LR; 
 } 
-45 -> 49; 
-49 -> 57; 
-57 -> 58; 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+52 -> 51; 
+    rankdir = LR; 
+} 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+50; 
+    rankdir = LR; 
+} 
+45 -> 48; 
+48 -> 56; 
+56 -> 57; 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+57; 
+    rankdir = LR; 
+} 
+48 -> 55; 
+55 -> 58; 
+58 -> 60; 
+58 -> 59; 
+59 -> 61; 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+61; 
+    rankdir = LR; 
+} 
+{ 
+    rank = same; 
+    edge[ style=invis]; 
+60 -> 59; 
+    rankdir = LR; 
+} 
 { 
     rank = same; 
     edge[ style=invis]; 
 58; 
     rankdir = LR; 
 } 
-49 -> 56; 
-56 -> 59; 
-59 -> 60; 
+48 -> 54; 
+54 -> 62; 
 { 
     rank = same; 
     edge[ style=invis]; 
-60; 
+62; 
     rankdir = LR; 
 } 
 { 
     rank = same; 
     edge[ style=invis]; 
-59; 
-    rankdir = LR; 
-} 
-49 -> 55; 
-55 -> 63; 
-63 -> 64; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-64; 
-    rankdir = LR; 
-} 
-55 -> 62; 
-62 -> 65; 
-65 -> 66; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-66; 
+56 -> 55 -> 54; 
     rankdir = LR; 
 } 
 { 
     rank = same; 
     edge[ style=invis]; 
-65; 
+49 -> 48; 
     rankdir = LR; 
 } 
-55 -> 61; 
-61 -> 67; 
+41 -> 44; 
 { 
     rank = same; 
     edge[ style=invis]; 
-67; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-63 -> 62 -> 61; 
+47 -> 46 -> 45 -> 44; 
     rankdir = LR; 
 } 
 { 
     rank = same; 
     edge[ style=invis]; 
-57 -> 56 -> 55; 
+42 -> 41; 
     rankdir = LR; 
 } 
+25 -> 39; 
+39 -> 63; 
 { 
     rank = same; 
     edge[ style=invis]; 
-51 -> 50 -> 49; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-46 -> 45; 
-    rankdir = LR; 
-} 
-40 -> 41; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-44 -> 43 -> 42 -> 41; 
-    rankdir = LR; 
-} 
-32 -> 39; 
-39 -> 69; 
-69 -> 73; 
-69 -> 72; 
-69 -> 71; 
-71 -> 75; 
-75 -> 76; 
-76 -> 77; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-77; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-76; 
-    rankdir = LR; 
-} 
-71 -> 74; 
-74 -> 78; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-78; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-75 -> 74; 
-    rankdir = LR; 
-} 
-69 -> 70; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-73 -> 72 -> 71 -> 70; 
-    rankdir = LR; 
-} 
-39 -> 68; 
-68 -> 80; 
-80 -> 84; 
-80 -> 83; 
-80 -> 82; 
-82 -> 86; 
-86 -> 87; 
-87 -> 88; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-88; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-87; 
-    rankdir = LR; 
-} 
-82 -> 85; 
-85 -> 91; 
-91 -> 92; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-92; 
-    rankdir = LR; 
-} 
-85 -> 90; 
-90 -> 93; 
-93 -> 94; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-94; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-93; 
-    rankdir = LR; 
-} 
-85 -> 89; 
-89 -> 95; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-95; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-91 -> 90 -> 89; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-86 -> 85; 
-    rankdir = LR; 
-} 
-80 -> 81; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-84 -> 83 -> 82 -> 81; 
-    rankdir = LR; 
-} 
-68 -> 79; 
-79 -> 96; 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-96; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-80 -> 79; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-69 -> 68; 
+63; 
     rankdir = LR; 
 } 
 { 
@@ -480,19 +306,7 @@ digraph G {
 { 
     rank = same; 
     edge[ style=invis]; 
-33 -> 32; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
 26 -> 25; 
-    rankdir = LR; 
-} 
-{ 
-    rank = same; 
-    edge[ style=invis]; 
-19 -> 18; 
     rankdir = LR; 
 } 
 { 

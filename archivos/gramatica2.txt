@@ -1,0 +1,48 @@
+PROGRAM -> FUNCTIONS STATEMENTS 
+FUNCTIONS -> FUNCTION FUNCTIONS 
+FUNCTIONS -> ''
+
+FUNCTION -> def id lparem PARATYS rparem ini_llave STATEMENTS return EXP dotcomma fin_llave 
+PARATYS -> TYPE id PARATY 
+PARATYS -> ''
+PARATY -> comma TYPE id PARATY 
+PARATY -> ''
+
+STATEMENTS -> STATEMENT STATEMENTS 
+STATEMENTS -> ''
+STATEMENT -> DECLARATION 
+STATEMENT -> ASSIGN
+STATEMENT -> IF
+
+DECLARATION -> TYPE id equal EXP dotcomma 
+TYPE -> int 
+TYPE -> bool
+ASSIGN -> id equal EXP dotcomma
+
+EXP -> T E'
+E' -> OPER T E'
+E' -> ''
+T -> TERM
+T -> lparem EXP rparem
+TERM -> id INVOCACION
+TERM -> num
+TERM -> BOOLEAN
+BOOLEAN -> true
+BOOLEAN -> false
+INVOCACION -> lparem PARAMS rparem 
+INVOCACION -> ''
+OPER -> addition
+OPER -> subtract
+OPER -> division
+OPER -> multiplication
+
+PARAMS -> EXP PARAM 
+PARAMS -> ''
+PARAM -> comma EXP PARAM 
+PARAM -> ''
+
+
+IF -> if lparem CONDITION rparem ini_llave STATEMENTS fin_llave
+CONDITION -> EXP OPERCON EXP
+OPERCON -> minor
+OPERCON -> mayor
